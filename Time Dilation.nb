@@ -1,0 +1,171 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5442,        162]
+NotebookOptionsPosition[      4823,        137]
+NotebookOutlinePosition[      5209,        154]
+CellTagsIndexPosition[      5166,        151]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+GeoDistance doesn\[CloseCurlyQuote]t consider height
+Default units in meters
+obsTime = \[Gamma]propTime\
+\>", "Text",
+ CellChangeTimes->{{3.650469002135173*^9, 3.650469022941586*^9}, {
+  3.650469312791988*^9, 3.650469320694541*^9}, {3.65047018297937*^9, 
+  3.6504701951282597`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"distanceTravelled", " ", "[", 
+   RowBox[{"city1_", ",", "city2_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NumberQ", "[", 
+      RowBox[{
+       RowBox[{"CityData", "[", 
+        RowBox[{"city1", ",", " ", "\"\<Coordinates\>\""}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}], "&&", 
+     RowBox[{"NumberQ", "[", 
+      RowBox[{
+       RowBox[{"CityData", "[", 
+        RowBox[{"city2", ",", " ", "\"\<Coordinates\>\""}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", 
+    RowBox[{"GeoDistance", "[", 
+     RowBox[{
+      RowBox[{"CityData", "[", 
+       RowBox[{"city1", ",", " ", "\"\<Coordinates\>\""}], "]"}], ",", " ", 
+      RowBox[{"CityData", "[", 
+       RowBox[{"city2", ",", " ", "\"\<Coordinates\>\""}], "]"}]}], "]"}], 
+    ",", " ", "\"\<Erroneous City Input\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.650468859487031*^9, 3.650468915245422*^9}, {
+  3.650469137170884*^9, 3.65046917458165*^9}, {3.650469274924686*^9, 
+  3.650469438917742*^9}, {3.6504695470730886`*^9, 3.650469814247566*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"observerTime", "[", 
+   RowBox[{"dist_", ",", "vel_"}], "]"}], ":=", 
+  RowBox[{"vel", "/", "dist"}]}]], "Input",
+ CellChangeTimes->{{3.650469901155714*^9, 3.650469925448053*^9}, {
+  3.650470254220125*^9, 3.650470269946416*^9}, {3.6504703288518887`*^9, 
+  3.650470335883807*^9}, {3.6504730869312468`*^9, 3.65047310261727*^9}, {
+  3.650473143629236*^9, 3.650473152620647*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"properTime", "[", 
+   RowBox[{"vel_", ",", "obsTime_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"1", "-", 
+     RowBox[{
+      RowBox[{"(", 
+       FractionBox["vel", 
+        RowBox[{"2.998", " ", 
+         SuperscriptBox["10", "8"]}]], ")"}], "^", "2"}]}], "]"}], "*", 
+   "obsTime"}]}]], "Input",
+ CellChangeTimes->{{3.650473134399001*^9, 3.6504731862997017`*^9}, {
+  3.650473241389072*^9, 3.650473298739388*^9}, {3.650473378777492*^9, 
+  3.65047338052008*^9}, {3.6504734624652*^9, 3.65047351875846*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.650473266849299*^9, 3.650473268699588*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"city1", "=", 
+   RowBox[{"Input", "[", "\"\<Enter Starting City\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"city2", "=", 
+   RowBox[{"Input", "[", "\"\<Enter Destination\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vel", "=", 
+   RowBox[{
+    RowBox[{"Input", "[", "\"\<Enter Velocity in mph\>\"", "]"}], "*", 
+    "1609.3"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dist", "=", 
+   RowBox[{"distanceTravelled", "[", 
+    RowBox[{
+     RowBox[{"ToString", "[", "city1", "]"}], ",", 
+     RowBox[{"ToString", "[", "city2", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"obsTime", "=", 
+   RowBox[{"observerTime", "[", 
+    RowBox[{"dist", ",", "vel"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"propTime", "=", 
+   RowBox[{"properTime", "[", 
+    RowBox[{"vel", ",", "obsTime"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"obsTime", "-", "propTime"}]}], "Input",
+ CellChangeTimes->{{3.650474242661789*^9, 3.650474248384863*^9}, {
+  3.650474310655778*^9, 3.650474336573827*^9}, {3.6504746065305233`*^9, 
+  3.650474612569066*^9}, {3.6504746514084578`*^9, 3.650474784291504*^9}, {
+  3.650474819717374*^9, 3.650474834546845*^9}, {3.650474880677367*^9, 
+  3.6504750301195717`*^9}}],
+
+Cell[BoxData["4.862779326431088`*^-7"], "Output",
+ CellChangeTimes->{{3.6504747672393103`*^9, 3.650474791243514*^9}, 
+   3.650474842141725*^9, 3.6504750013865633`*^9, 3.650475063816617*^9, 
+   3.650475121158577*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.650474618836012*^9, 3.65047464995436*^9}}],
+
+Cell[BoxData["\n"], "Input",
+ CellChangeTimes->{{3.650474294580173*^9, 3.6504743000890093`*^9}}]
+},
+WindowSize->{740, 751},
+WindowMargins->{{299, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 292, 7, 105, "Text"],
+Cell[852, 29, 1115, 26, 169, "Input"],
+Cell[1970, 57, 410, 8, 44, "Input"],
+Cell[2383, 67, 565, 15, 100, "Input"],
+Cell[2951, 84, 92, 1, 43, "Input"],
+Cell[CellGroupData[{
+Cell[3068, 89, 1328, 34, 219, "Input"],
+Cell[4399, 125, 215, 3, 45, "Output"]
+}, Open  ]],
+Cell[4629, 131, 91, 1, 43, "Input"],
+Cell[4723, 134, 96, 1, 69, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
